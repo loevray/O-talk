@@ -28,7 +28,7 @@ const LandingFormContainer = (props) => {
     const { name, value } = e.target;
     onChange({ name, value });
   };
-  const onRegisterSubmit = (e) => {
+  const onRegisterSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       return alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
@@ -39,13 +39,18 @@ const LandingFormContainer = (props) => {
       password,
       confirmPassword,
     };
-    handleRegister(account).then((response) => {
-      if (response.payload.success) {
-        alert("회원가입 성공!");
+    const register = await handleRegister(account);
+    if (register.payload.success) {
+      alert("회원가입 성공!");
+      const login = await handleLogin(account);
+      if (login.payload.loginSuccess) {
+        props.history.push("/home");
       } else {
-        alert("회원가입 에러");
+        alert("가입 도중 로그인 에러!");
       }
-    });
+    } else {
+      alert("회원가입 에러");
+    }
   };
   const onLoginSubmit = (e) => {
     e.preventDefault();

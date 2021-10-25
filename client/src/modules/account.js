@@ -7,33 +7,27 @@ const AUTH = "account/AUTH";
 //액션 생성 함수들
 
 //로그인
-export const login = (account) => {
-  const request = axios
-    .post("/api/users/login", account)
-    .then((respones) => respones.data);
+export const login = async (account) => {
+  const request = await axios.post("/api/users/login", account);
   return {
     type: LOGIN,
-    payload: request,
+    payload: request.data,
   };
 };
 //회원가입
-export const register = (account) => {
-  const request = axios
-    .post("/api/users/register", account)
-    .then((respones) => respones.data);
+export const register = async (account) => {
+  const request = await axios.post("/api/users/register", account);
   return {
     type: REGISTER,
-    payload: request,
+    payload: request.data,
   };
 };
 //인증
-export const auth = () => {
-  const request = axios
-    .get("/api/users/auth")
-    .then((respones) => respones.data);
+export const auth = async () => {
+  const request = await axios.get("/api/users/auth");
   return {
     type: AUTH,
-    payload: request,
+    payload: request.data,
   };
 };
 

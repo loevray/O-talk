@@ -44,12 +44,15 @@ const ImgCurtain = styled.div`
   width: 100%;
   background-color: black;
   height: 100%;
-  opacity: 0.4;
+  opacity: 0.45;
   z-index: -90;
 `;
 const MainCenter = styled.aside`
   display: flex;
   justify-content: center;
   width: 650px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 export default withRouter(LandingPage);

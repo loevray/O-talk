@@ -1,8 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { withRouter } from "react-router";
+import Footer from "../Footer/Footer";
 
-const Home = (props) => {
+const HomePage = (props) => {
   const onLogOutClick = () => {
     axios.get("/api/users/logout").then((response) => {
       if (response.data.success) {
@@ -13,19 +14,11 @@ const Home = (props) => {
     });
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      여긴 @홈@
+    <>
       <button onClick={onLogOutClick}>로그아웃</button>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default withRouter(Home);
+export default withRouter(HomePage);
