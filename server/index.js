@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-//몽구스 설정. 몽구스 설치하면 자동으로 mongodb도 깔림.
+//몽구스 설정.
 const mongoose = require("mongoose");
-const { auth } = require("./middleware/auth");
 mongoose
   .connect(config.mongoURI) //로컬로 사용할거면 'mongodb://localhost:27017/사용할db이름' 이렇게 적는다.
   .then(() => console.log("mongodb connected nice!"))
@@ -66,6 +65,7 @@ app.post("/api/users/login", (req, res) => {
   });
 });
 
+const { auth } = require("./middleware/auth");
 //유저가 로그인 되어있는지 확인하는 함수
 app.get("/api/users/auth", auth, (req, res) => {
   res.status(200).json({

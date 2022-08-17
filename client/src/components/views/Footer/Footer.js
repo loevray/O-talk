@@ -5,12 +5,7 @@ const Footer = () => {
   return (
     <FooterWrap>
       <ContentWrap>
-        <Content>응애</Content>
-        <Content>응애</Content>
-        <Content>응애</Content>
-        <Content>응애</Content>
-        <Content>응애</Content>
-        <Content>응애</Content>
+        <Content>여기는푸터</Content>
       </ContentWrap>
     </FooterWrap>
   );

@@ -1,24 +1,40 @@
-import axios from "axios";
 import React from "react";
-import { withRouter } from "react-router";
+import styled from "styled-components";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Nav from "../NavBar/Nav";
+import Main from "./Main";
 
 const HomePage = (props) => {
-  const onLogOutClick = () => {
-    axios.get("/api/users/logout").then((response) => {
-      if (response.data.success) {
-        props.history.push("/");
-      } else {
-        alert("로그아웃 실패");
-      }
-    });
-  };
   return (
     <>
-      <button onClick={onLogOutClick}>로그아웃</button>
+      <HomePageWrap>
+        <Header />
+        <MainWrap>
+          <Nav />
+          <Main />
+        </MainWrap>
+      </HomePageWrap>
       <Footer />
     </>
   );
 };
 
-export default withRouter(HomePage);
+const HomePageWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 2500px;
+  background-color: purple;
+  color: white;
+`;
+
+const MainWrap = styled.div`
+  display: flex;
+  padding-top: 5rem;
+  height: 50rem;
+  width: 100%;
+`;
+
+export default HomePage;
