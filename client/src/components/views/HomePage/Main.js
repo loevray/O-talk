@@ -6,7 +6,7 @@ const Main = () => {
 };
 
 const MainWrap2 = styled.main`
-  background-color: green;
+  background-color: #f7f7f8;
   width: 100%;
   padding-left: 5rem;
 `;

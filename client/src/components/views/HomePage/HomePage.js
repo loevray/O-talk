@@ -32,7 +32,7 @@ const HomePageWrap = styled.div`
 
 const MainWrap = styled.div`
   display: flex;
-  padding-top: 5rem;
+  padding-top: 3.5rem;
   height: 50rem;
   width: 100%;
 `;

@@ -6,7 +6,7 @@ const Nav = () => {
 };
 
 const Navwrap = styled.nav`
-  background-color: yellow;
+  background-color: #efeff1;
   position: fixed;
   color: black;
   height: 100%;

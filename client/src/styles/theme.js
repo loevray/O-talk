@@ -1,6 +1,9 @@
 const fonts = {
   size: {
-    m: "1rem",
+    s: "1rem",
+    m: "2rem",
+    l: "2.5rem",
+    xl: "4rem",
   },
 };
 const color = {
