@@ -1,9 +1,12 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import styled from "styled-components";
 
 const Header = (props) => {
+  useEffect(() => {
+    console.log(props.theme);
+  });
   const onLogOutClick = () => {
     axios.get("/api/users/logout").then((response) => {
       if (response.data.success) {
@@ -27,8 +30,9 @@ const Header = (props) => {
         </SearchForm>
       </HeaderMid>
       <HeaderRight>
-        헤더 오른쪽
+        <span>알람</span>
         <button onClick={onLogOutClick}>로그아웃</button>
+        <span>내 정보</span>
       </HeaderRight>
     </HeaderWrap>
   );
@@ -53,7 +57,16 @@ const HeaderLeft = styled.div`
   align-items: center;
 `;
 const HeaderMid = styled(HeaderLeft)``;
-const HeaderRight = styled(HeaderLeft)``;
+const HeaderRight = styled(HeaderLeft)`
+  button {
+    margin: 0px 10px 0 10px;
+  }
+  span {
+    border-radius: 2.5px;
+    border: 1px solid black;
+  }
+  padding-right: 1rem;
+`;
 const HeaderLeftText = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
@@ -77,8 +90,10 @@ const SearchInput = styled.input`
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border: 2px solid white;
+  outline: none;
   &:focus {
-    border: 2px solid blue;
+    border: 2px solid ${(props) => props.theme.color.violet};
+    background-color: white;
   }
   &:placeholder {
     color: darkgray;

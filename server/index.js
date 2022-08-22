@@ -34,7 +34,6 @@ app.post("/api/users/register", (req, res) => {
     return res.status(200).json({ success: true });
   });
 });
-
 app.post("/api/users/login", (req, res) => {
   //1요청된 이메일을 데이터베이스에 있는지 찾음.
   User.findOne({ email: req.body.email }, (err, user) => {
